@@ -1,0 +1,26 @@
+2025-04-05 15:12:15 [main] INFO  c.e.c.ClientServiceApplication - Starting ClientServiceApplication using Java 11.0.21 on rodrigor.local with PID 35360 (/Users/rodrigoramirezrodriguez/Desktop/Cursos/BCP/client-service-project-rxjava/target/classes started by rodrigoramirezrodriguez in /Users/rodrigoramirezrodriguez/Desktop/Cursos/BCP/client-service-project-rxjava)
+2025-04-05 15:12:15 [main] DEBUG c.e.c.ClientServiceApplication - Running with Spring Boot v2.7.0, Spring v5.3.20
+2025-04-05 15:12:15 [main] INFO  c.e.c.ClientServiceApplication - The following 1 profile is active: "dev"
+2025-04-05 15:12:16 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2025-04-05 15:12:16 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-04-05 15:12:16 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.63]
+2025-04-05 15:12:16 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-04-05 15:12:16 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 829 ms
+2025-04-05 15:12:16 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoint(s) beneath base path '/actuator'
+2025-04-05 15:12:16 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2025-04-05 15:12:16 [main] INFO  c.e.c.ClientServiceApplication - Started ClientServiceApplication in 1.917 seconds (JVM running for 2.378)
+2025-04-05 15:12:16 [main] INFO  c.e.c.ClientServiceApplication - 
+----------------------------------------------------------
+	Aplicación 'client-service' está ejecutándose!
+	Acceso local: 		http://localhost:8080/
+	Acceso externo: 	http://127.0.0.1:8080/
+	Perfil(es): 		dev
+----------------------------------------------------------
+2025-04-05 15:12:17 [RMI TCP Connection(2)-127.0.0.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-05 15:12:17 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-04-05 15:12:17 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2025-04-05 15:14:17 [http-nio-8080-exec-1] INFO  c.e.c.controller.ClientController - Recibida solicitud de búsqueda para cliente con documento: 12345678
+2025-04-05 15:14:17 [http-nio-8080-exec-1] INFO  c.e.c.service.ClientServiceImpl - Buscando datos para el cliente con documento: 12345678
+2025-04-05 15:14:17 [http-nio-8080-exec-1] INFO  c.e.c.r.MockClientRepository - Mock: Procesando solicitud para cliente con documento: 12345678
+2025-04-05 15:14:17 [RxCachedThreadScheduler-1] INFO  c.e.c.service.ClientServiceImpl - Cliente encontrado con ID: CLI-12345678
+2025-04-05 15:14:17 [RxCachedThreadScheduler-1] INFO  c.e.c.controller.ClientController - Retornando datos para cliente ID: CLI-12345678

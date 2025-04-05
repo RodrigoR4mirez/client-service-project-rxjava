@@ -1,0 +1,65 @@
+spring:
+  application:
+    name: client-service
+  profiles:
+    active: dev  # Activamos el perfil "dev" por defecto
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+    default-property-inclusion: non_null
+
+server:
+  port: 8080
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain
+
+# Configuración del API externo (solo se usa en perfil prod)
+external:
+  api:
+    base-url: https://api.example.com  # Esta URL no se usará en desarrollo
+    timeout: 30  # segundos
+
+# Configuración de logging
+logging:
+  level:
+    root: INFO
+    com.example.clientservice: DEBUG
+    org.springframework.web: INFO
+  file:
+    name: logs/client-service.log
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+# Configuración de métricas y monitorización
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when_authorized
+  health:
+    circuit-breakers:
+      enabled: true
+
+---
+# Configuración específica para el perfil de desarrollo
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+# Podríamos poner configuraciones específicas para desarrollo aquí
+
+---
+# Configuración específica para el perfil de producción
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+# Las configuraciones específicas para producción irían aquí
