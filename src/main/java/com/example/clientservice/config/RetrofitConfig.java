@@ -1,10 +1,12 @@
 package com.example.clientservice.config;
 
 import com.example.clientservice.repository.ClientRepository;
+import com.example.clientservice.repository.TokenRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -29,39 +31,52 @@ public class RetrofitConfig {
     private long timeout;
 
     @Bean
-    public Retrofit retrofitClient() {
+    public OkHttpClient okHttpClient() {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder()
                 .connectTimeout(timeout, TimeUnit.SECONDS)
                 .readTimeout(timeout, TimeUnit.SECONDS)
-                .writeTimeout(timeout, TimeUnit.SECONDS);
+                .writeTimeout(timeout, TimeUnit.SECONDS)
+                .addInterceptor(chain -> {
+                    // Headers estáticos que se aplicarán a todas las peticiones
+                    Request original = chain.request();
+                    Request.Builder requestBuilder = original.newBuilder()
+                            .header("Content-Type", "application/json")
+                            .header("Accept", "application/json")
+                            .header("X-App-Version", "1.0.0");
 
-        // En producción, el nivel de logging debe ser menor
+                    return chain.proceed(requestBuilder.build());
+                });
+
         if (log.isDebugEnabled()) {
             httpClient.addInterceptor(logging);
         }
 
+        return httpClient.build();
+    }
+
+    @Bean
+    public Retrofit retrofitClient(OkHttpClient okHttpClient) {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
 
         return new Retrofit.Builder()
                 .baseUrl(baseUrl)
-                .client(httpClient.build())
+                .client(okHttpClient)
                 .addConverterFactory(JacksonConverterFactory.create(objectMapper))
                 .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
                 .build();
     }
 
-    /**
-     * Bean que crea la implementación de ClientRepository utilizando Retrofit.
-     *
-     * @param retrofit La instancia de Retrofit configurada
-     * @return La implementación de ClientRepository
-     */
     @Bean
     public ClientRepository clientRepository(Retrofit retrofit) {
         return retrofit.create(ClientRepository.class);
+    }
+
+    @Bean
+    public TokenRepository tokenRepository(Retrofit retrofit) {
+        return retrofit.create(TokenRepository.class);
     }
 }

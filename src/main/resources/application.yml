@@ -2,7 +2,7 @@ spring:
   application:
     name: client-service
   profiles:
-    active: dev  # Activamos el perfil "dev" por defecto
+    active: dev
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     serialization:
@@ -15,11 +15,16 @@ server:
     enabled: true
     mime-types: application/json,application/xml,text/html,text/xml,text/plain
 
-# Configuración del API externo (solo se usa en perfil prod)
+# Configuración del API externo
 external:
   api:
-    base-url: https://api.example.com  # Esta URL no se usará en desarrollo
+    base-url: https://api.example.com
     timeout: 30  # segundos
+  # Configuración para el servicio de autenticación
+  auth:
+    url: /auth/token  # Endpoint para obtener tokens
+    client-id: your-client-id
+    client-secret: your-client-secret
 
 # Configuración de logging
 logging:
@@ -27,6 +32,7 @@ logging:
     root: INFO
     com.example.clientservice: DEBUG
     org.springframework.web: INFO
+    retrofit2.http: DEBUG
   file:
     name: logs/client-service.log
   pattern:
@@ -45,21 +51,3 @@ management:
   health:
     circuit-breakers:
       enabled: true
-
----
-# Configuración específica para el perfil de desarrollo
-spring:
-  config:
-    activate:
-      on-profile: dev
-
-# Podríamos poner configuraciones específicas para desarrollo aquí
-
----
-# Configuración específica para el perfil de producción
-spring:
-  config:
-    activate:
-      on-profile: prod
-
-# Las configuraciones específicas para producción irían aquí

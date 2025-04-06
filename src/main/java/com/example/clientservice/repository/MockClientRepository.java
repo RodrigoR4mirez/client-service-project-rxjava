@@ -1,7 +1,7 @@
 package com.example.clientservice.repository;
 
-import com.example.clientservice.model.ClientRequest;
-import com.example.clientservice.model.ClientResponse;
+import com.example.clientservice.model.external.ExternalClientRequest;
+import com.example.clientservice.model.external.ExternalClientResponse;
 import io.reactivex.rxjava3.core.Single;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Primary;
@@ -9,10 +9,10 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.Map;
 
 /**
  * Implementación mock del repositorio de clientes para desarrollo y pruebas.
- * Esta clase simula las respuestas de una API externa.
  */
 @Component
 @Primary
@@ -21,8 +21,13 @@ import java.time.LocalDate;
 public class MockClientRepository implements ClientRepository {
 
     @Override
-    public Single<ClientResponse> getClientData(ClientRequest request) {
-        log.info("Mock: Procesando solicitud para cliente con documento: {}", request.getDocumentNumber());
+    public Single<ExternalClientResponse> getClientData(
+            String transactionId,
+            Map<String, String> headers,
+            ExternalClientRequest request) {
+
+        log.info("Mock: Procesando solicitud para cliente con documento: {}, transactionId: {}",  request.getDocumentNumber(), transactionId);
+        log.info("Mock: Headers recibidos: {}", headers);
 
         // Simulamos un pequeño retraso como lo haría una API real
         try {
@@ -36,20 +41,22 @@ public class MockClientRepository implements ClientRepository {
             return Single.error(new RuntimeException("Cliente no encontrado"));
         }
 
-        // Para cualquier otro documento, devolvemos datos ficticios
+        // Para cualquier otro documento, devolvemos datos ficticios en formato de API externa
         return Single.just(
-                ClientResponse.builder()
-                        .id("CLI-" + request.getDocumentNumber())
+                ExternalClientResponse.builder()
+                        .clientId("CLI-" + request.getDocumentNumber())
                         .documentType("DNI")
                         .documentNumber(request.getDocumentNumber())
-                        .name(request.getName())
+                        .firstName(request.getName())
                         .lastName("Apellido de Prueba")
-                        .email(request.getName().toLowerCase().replace(" ", ".") + "@ejemplo.com")
+                        .emailAddress(request.getName().toLowerCase().replace(" ", ".") + "@ejemplo.com")
                         .phoneNumber("987" + request.getDocumentNumber().substring(0, 6))
-                        .address("Av. Ejemplo 123, Lima")
-                        .birthDate(LocalDate.of(1985, 5, 15))
-                        .status("ACTIVE")
+                        .residentialAddress("Av. Ejemplo 123, Lima")
+                        .dateOfBirth(LocalDate.of(1985, 5, 15))
+                        .clientStatus("ACTIVE")
                         .registrationDate(LocalDate.now().minusYears(2))
+                        .hasPendingProcesses(false)
+                        .riskCategory(1)
                         .build()
         );
     }
