@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+import java.net.SocketTimeoutException;
 import java.time.LocalDate;
 import java.util.Map;
 
@@ -29,6 +30,20 @@ public class MockClientRepository implements ClientRepository {
         log.info("Mock: Procesando solicitud para cliente con documento: {}, transactionId: {}",  request.getDocumentNumber(), transactionId);
         log.info("Mock: Headers recibidos: {}", headers);
 
+
+        // Simular timeout para documentos específicos
+        if ("88888888".equals(request.getDocumentNumber())) {
+            return Single.create(emitter -> {
+                try {
+                    // Simula un timeout de más de 30 segundos
+                    Thread.sleep(40000);  // 40 segundos
+                    emitter.onError(new SocketTimeoutException("Timeout simulado para documento 88888888"));
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    emitter.onError(new RuntimeException("Interrupción durante simulación de timeout"));
+                }
+            });
+        }
         // Simulamos un pequeño retraso como lo haría una API real
         try {
             Thread.sleep(500);

@@ -18,8 +18,10 @@ server:
 # Configuración del API externo
 external:
   api:
+    connect-timeout: 10  # tiempo de conexión
+    read-timeout: 30     # tiempo de lectura
+    write-timeout: 30    # tiempo de escritura
     base-url: https://api.example.com
-    timeout: 30  # segundos
   # Configuración para el servicio de autenticación
   auth:
     url: /auth/token  # Endpoint para obtener tokens

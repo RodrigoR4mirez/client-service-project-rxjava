@@ -1,0 +1,152 @@
+
+
+### Búsqueda de Cliente - Caso Exitoso
+POST http://localhost:8080/api/clients/TRX-12345/search
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer your-access-token
+X-Transaction-ID: TRX-12345
+X-Correlation-ID: CORR-67890
+X-Channel: WEB
+X-Request-Timestamp: 2024-04-06T15:30:45Z
+X-Source-System: client-service
+X-Target-System: external-client-api
+User-Agent: PostmanRuntime/7.29.0
+X-App-Version: 1.0.0
+
+{
+  "documentNumber": "12345678",
+  "name": "Juan Pérez"
+}
+
+### Búsqueda de Cliente - Sin Resultados
+POST http://localhost:8080/api/clients/TRX-99999/search
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer your-access-token
+X-Transaction-ID: TRX-99999
+X-Correlation-ID: CORR-54321
+X-Channel: MOBILE
+X-Request-Timestamp: 2024-04-06T15:35:22Z
+X-Source-System: mobile-app
+X-Target-System: external-client-api
+User-Agent: AndroidApp/2.1.0
+X-App-Version: 2.1.0
+
+{
+  "documentNumber": "99999999",
+  "name": "Cliente Inexistente"
+}
+
+### Validación de Campos Incorrectos
+POST http://localhost:8080/api/clients/TRX-INVALID/search
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer your-access-token
+X-Transaction-ID: TRX-INVALID
+X-Correlation-ID: CORR-11223
+X-Channel: WEB
+X-Request-Timestamp: 2024-04-06T15:40:10Z
+X-Source-System: client-service
+X-Target-System: external-client-api
+User-Agent: Postman/Test
+X-App-Version: 1.0.0
+
+{
+  "documentNumber": "123",
+  "name": "A"
+}
+
+
+### 1. Validación - Documento Inválido (ValidationException)
+POST http://localhost:8080/api/clients/TRX-INVALID-DOC/search
+Content-Type: application/json
+Accept: application/json
+X-Transaction-ID: TRX-INVALID-DOC
+X-Correlation-ID: CORR-VALIDATION-1
+
+{
+  "documentNumber": "",
+  "name": ""
+}
+
+### 2. Cliente No Encontrado (ClientNotFoundException)
+POST http://localhost:8080/api/clients/TRX-NOT-FOUND/search
+Content-Type: application/json
+Accept: application/json
+X-Transaction-ID: TRX-NOT-FOUND
+X-Correlation-ID: CORR-NOT-FOUND-1
+
+{
+  "documentNumber": "99999999",
+  "name": "Cliente Inexistente"
+}
+
+### 3. Timeout de Servicio Externo (TimeoutException)
+POST http://localhost:8080/api/clients/TRX-TIMEOUT/search
+Content-Type: application/json
+Accept: application/json
+X-Transaction-ID: TRX-TIMEOUT
+X-Correlation-ID: CORR-TIMEOUT-1
+
+{
+  "documentNumber": "88888888",
+  "name": "Cliente Timeout"
+}
+
+### 4. Servicio Externo No Disponible (ServiceException)
+POST http://localhost:8080/api/clients/TRX-SERVICE-UNAVAILABLE/search
+Content-Type: application/json
+Accept: application/json
+X-Transaction-ID: TRX-SERVICE-UNAVAILABLE
+X-Correlation-ID: CORR-SERVICE-UNAVAILABLE-1
+
+{
+  "documentNumber": "20000000",
+  "name": "Cliente Sin Servicio"
+}
+
+### 5. Datos Inválidos - Tamaño de Campos (ValidationException)
+POST http://localhost:8080/api/clients/TRX-INVALID-SIZE/search
+Content-Type: application/json
+Accept: application/json
+X-Transaction-ID: TRX-INVALID-SIZE
+X-Correlation-ID: CORR-INVALID-SIZE-1
+
+{
+  "documentNumber": "1",
+  "name": "A"
+}
+
+### 6. Caracteres Especiales en Nombre (ValidationException)
+POST http://localhost:8080/api/clients/TRX-INVALID-CHARS/search
+Content-Type: application/json
+Accept: application/json
+X-Transaction-ID: TRX-INVALID-CHARS
+X-Correlation-ID: CORR-INVALID-CHARS-1
+
+{
+  "documentNumber": "30000000",
+  "name": "Juan@#$%Pérez"
+}
+
+### 7. Headers Incompletos (Manejo de Headers)
+POST http://localhost:8080/api/clients/TRX-MISSING-HEADERS/search
+# Intencionalmente se omiten algunos headers importantes
+
+{
+    "documentNumber": "40000000",
+    "name": "Cliente Sin Headers"
+}
+
+### Timeout Normal
+POST http://localhost:8080/api/clients/test-timeout/search
+Content-Type: application/json
+X-Transaction-ID: timeout-test-001
+X-Channel: WEB
+Accept: application/json
+
+{
+  "documentNumber": "88888888",
+  "name": "Cliente Timeout Test"
+}

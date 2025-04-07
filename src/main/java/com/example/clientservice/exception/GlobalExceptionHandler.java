@@ -62,23 +62,23 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     }
 
-    /**
-     * Maneja las excepciones de timeout.
-     */
-    @ExceptionHandler({TimeoutException.class, SocketTimeoutException.class})
-    @ResponseStatus(HttpStatus.GATEWAY_TIMEOUT)
-    public ResponseEntity<ErrorResponse> handleTimeoutException(
-            Exception ex, WebRequest request) {
-
-        ErrorResponse errorResponse = buildErrorResponse(
-                ApiError.TIMEOUT_ERROR,
-                request.getDescription(false));
-
-        errorResponse.addError("Timeout al comunicarse con el servicio externo: " + ex.getMessage());
-
-        log.error("Timeout error: {}", ex.getMessage());
-        return new ResponseEntity<>(errorResponse, HttpStatus.GATEWAY_TIMEOUT);
-    }
+//    /**
+//     * Maneja las excepciones de timeout.
+//     */
+//    @ExceptionHandler({TimeoutException.class, SocketTimeoutException.class})
+//    @ResponseStatus(HttpStatus.GATEWAY_TIMEOUT)
+//    public ResponseEntity<ErrorResponse> handleTimeoutException(
+//            Exception ex, WebRequest request) {
+//
+//        ErrorResponse errorResponse = buildErrorResponse(
+//                ApiError.TIMEOUT_ERROR,
+//                request.getDescription(false));
+//
+//        errorResponse.addError("Timeout al comunicarse con el servicio externo: " + ex.getMessage());
+//
+//        log.error("Timeout error: {}", ex.getMessage());
+//        return new ResponseEntity<>(errorResponse, HttpStatus.GATEWAY_TIMEOUT);
+//    }
 
     /**
      * Maneja las excepciones del servicio.
@@ -127,5 +127,37 @@ public class GlobalExceptionHandler {
                 .timestamp(LocalDateTime.now())
                 .path(path)
                 .build();
+    }
+
+    @ExceptionHandler({
+            TimeoutException.class,
+            SocketTimeoutException.class,
+            TimeoutExceptionHandler.class
+    })
+    @ResponseStatus(HttpStatus.GATEWAY_TIMEOUT)
+    public ResponseEntity<ErrorResponse> handleTimeoutException(
+            Exception ex, WebRequest request) {
+
+        String errorMessage = "Timeout al comunicarse con el servicio externo";
+        String errorCode = "TIMEOUT_ERROR_001";
+
+        if (ex instanceof TimeoutExceptionHandler) {
+            TimeoutExceptionHandler timeoutEx = (TimeoutExceptionHandler) ex;
+            errorCode = timeoutEx.getErrorCode();
+            errorMessage += ": " + timeoutEx.getMessage();
+        }
+
+        ErrorResponse errorResponse = ErrorResponse.builder()
+                .code(errorCode)
+                .status(HttpStatus.GATEWAY_TIMEOUT.toString())
+                .message("Timeout en servicio externo")
+                .timestamp(LocalDateTime.now())
+                .path(request.getDescription(false))
+                .build();
+
+        errorResponse.addError(errorMessage);
+
+        log.error("Timeout error: {}", errorMessage, ex);
+        return new ResponseEntity<>(errorResponse, HttpStatus.GATEWAY_TIMEOUT);
     }
 }

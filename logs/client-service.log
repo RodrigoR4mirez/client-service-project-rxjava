@@ -19,3 +19,482 @@
 2025-04-06 16:59:00 [RMI TCP Connection(3)-127.0.0.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
 2025-04-06 16:59:00 [RMI TCP Connection(3)-127.0.0.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2025-04-06 16:59:00 [RMI TCP Connection(3)-127.0.0.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2025-04-06 17:17:09 [main] INFO  c.e.c.ClientServiceApplication - Starting ClientServiceApplication using Java 11.0.21 on rodrigor.local with PID 40684 (/Users/rodrigoramirezrodriguez/Desktop/Cursos/BCP/client-service-project-rxjava/target/classes started by rodrigoramirezrodriguez in /Users/rodrigoramirezrodriguez/Desktop/Cursos/BCP/client-service-project-rxjava)
+2025-04-06 17:17:09 [main] DEBUG c.e.c.ClientServiceApplication - Running with Spring Boot v2.7.0, Spring v5.3.20
+2025-04-06 17:17:09 [main] INFO  c.e.c.ClientServiceApplication - The following 1 profile is active: "dev"
+2025-04-06 17:17:10 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2025-04-06 17:17:10 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-04-06 17:17:10 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.63]
+2025-04-06 17:17:10 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-04-06 17:17:10 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 900 ms
+2025-04-06 17:17:11 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoint(s) beneath base path '/actuator'
+2025-04-06 17:17:11 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2025-04-06 17:17:11 [main] INFO  c.e.c.ClientServiceApplication - Started ClientServiceApplication in 2.009 seconds (JVM running for 2.518)
+2025-04-06 17:17:11 [main] INFO  c.e.c.ClientServiceApplication - 
+----------------------------------------------------------
+	Aplicación 'client-service' está ejecutándose!
+	Acceso local: 		http://localhost:8080/
+	Acceso externo: 	http://127.0.0.1:8080/
+	Perfil(es): 		dev
+----------------------------------------------------------
+2025-04-06 17:17:11 [RMI TCP Connection(3)-127.0.0.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-06 17:17:11 [RMI TCP Connection(3)-127.0.0.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-04-06 17:17:11 [RMI TCP Connection(3)-127.0.0.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2025-04-06 17:17:31 [http-nio-8080-exec-1] INFO  c.e.c.controller.ClientController - Recibida solicitud de búsqueda para cliente con documento: 12345678, transactionId: TRX-12345
+2025-04-06 17:17:31 [http-nio-8080-exec-1] DEBUG c.e.clientservice.util.HeadersUtil - Headers procesados: ApiHeaders(authorization=null, transactionId=null, correlationId=null, channel=null, requestTimestamp=null, sourceSystem=null, targetSystem=null, contentType=null, accept=null, userAgent=null, appVersion=null)
+2025-04-06 17:17:31 [http-nio-8080-exec-1] INFO  c.e.c.service.ClientServiceImpl - Buscando datos para el cliente con documento: 12345678, transactionId: TRX-12345
+2025-04-06 17:17:31 [http-nio-8080-exec-1] INFO  c.e.c.service.TokenServiceImpl - Obteniendo token de autenticación en endpoint: /auth/token
+2025-04-06 17:17:31 [http-nio-8080-exec-1] INFO  c.e.c.repository.MockTokenRepository - Mock: Generando token para clientId: your-client-id usando endpoint: /auth/token
+2025-04-06 17:17:32 [RxCachedThreadScheduler-1] DEBUG c.e.c.service.TokenServiceImpl - Token obtenido exitosamente
+2025-04-06 17:17:32 [RxCachedThreadScheduler-1] DEBUG c.e.c.service.ClientServiceImpl - Headers preparados para API externa: ApiHeaders(authorization=Bearer mock-token-1743977851984, transactionId=TRX-12345, correlationId=null, channel=WEB, requestTimestamp=2025-04-06T17:17:31.683384, sourceSystem=client-service, targetSystem=null, contentType=application/json, accept=application/json, userAgent=null, appVersion=1.0.0)
+2025-04-06 17:17:32 [RxCachedThreadScheduler-1] INFO  c.e.c.r.MockClientRepository - Mock: Procesando solicitud para cliente con documento: 12345678, transactionId: TRX-12345
+2025-04-06 17:17:32 [RxCachedThreadScheduler-1] INFO  c.e.c.r.MockClientRepository - Mock: Headers recibidos: {Authorization=Bearer mock-token-1743977851984, X-Source-System=client-service, X-Channel=WEB, X-Request-Timestamp=2025-04-06T17:17:31.683384, Accept=application/json, X-Transaction-ID=TRX-12345, X-App-Version=1.0.0, Content-Type=application/json}
+2025-04-06 17:17:32 [RxCachedThreadScheduler-1] INFO  c.e.c.service.ClientServiceImpl - Cliente encontrado con ID: CLI-12345678
+2025-04-06 17:17:32 [RxCachedThreadScheduler-1] INFO  c.e.c.controller.ClientController - Retornando datos para cliente ID: CLI-12345678
+2025-04-06 17:26:08 [main] INFO  c.e.c.ClientServiceApplication - Starting ClientServiceApplication using Java 11.0.21 on rodrigor.local with PID 40762 (/Users/rodrigoramirezrodriguez/Desktop/Cursos/BCP/client-service-project-rxjava/target/classes started by rodrigoramirezrodriguez in /Users/rodrigoramirezrodriguez/Desktop/Cursos/BCP/client-service-project-rxjava)
+2025-04-06 17:26:08 [main] DEBUG c.e.c.ClientServiceApplication - Running with Spring Boot v2.7.0, Spring v5.3.20
+2025-04-06 17:26:08 [main] INFO  c.e.c.ClientServiceApplication - The following 1 profile is active: "dev"
+2025-04-06 17:26:09 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2025-04-06 17:26:09 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-04-06 17:26:09 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.63]
+2025-04-06 17:26:09 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-04-06 17:26:09 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 936 ms
+2025-04-06 17:26:10 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoint(s) beneath base path '/actuator'
+2025-04-06 17:26:10 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2025-04-06 17:26:10 [main] INFO  c.e.c.ClientServiceApplication - Started ClientServiceApplication in 2.019 seconds (JVM running for 2.651)
+2025-04-06 17:26:10 [main] INFO  c.e.c.ClientServiceApplication - 
+----------------------------------------------------------
+	Aplicación 'client-service' está ejecutándose!
+	Acceso local: 		http://localhost:8080/
+	Acceso externo: 	http://127.0.0.1:8080/
+	Perfil(es): 		dev
+----------------------------------------------------------
+2025-04-06 17:26:10 [RMI TCP Connection(2)-127.0.0.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-06 17:26:10 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-04-06 17:26:10 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2025-04-06 17:27:24 [http-nio-8080-exec-1] INFO  c.e.c.controller.ClientController - Recibida solicitud de búsqueda para cliente con documento: 12345678, transactionId: TRX-12345
+2025-04-06 17:27:24 [http-nio-8080-exec-1] DEBUG c.e.clientservice.util.HeadersUtil - Headers procesados: ApiHeaders(authorization=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9, transactionId=TRX-12345, correlationId=CORR-67890, channel=WEB, requestTimestamp=2024-04-06T15:30:45Z, sourceSystem=client-service, targetSystem=external-client-api, contentType=application/json, accept=application/json, userAgent=PostmanRuntime/7.29.0, appVersion=1.0.0)
+2025-04-06 17:27:24 [http-nio-8080-exec-1] INFO  c.e.c.service.ClientServiceImpl - Buscando datos para el cliente con documento: 12345678, transactionId: TRX-12345
+2025-04-06 17:27:24 [http-nio-8080-exec-1] INFO  c.e.c.service.TokenServiceImpl - Obteniendo token de autenticación en endpoint: /auth/token
+2025-04-06 17:27:24 [http-nio-8080-exec-1] INFO  c.e.c.repository.MockTokenRepository - Mock: Generando token para clientId: your-client-id usando endpoint: /auth/token
+2025-04-06 17:27:24 [RxCachedThreadScheduler-1] DEBUG c.e.c.service.TokenServiceImpl - Token obtenido exitosamente
+2025-04-06 17:27:24 [RxCachedThreadScheduler-1] DEBUG c.e.c.service.ClientServiceImpl - Headers preparados para API externa: ApiHeaders(authorization=Bearer mock-token-1743978444591, transactionId=TRX-12345, correlationId=CORR-67890, channel=WEB, requestTimestamp=2024-04-06T15:30:45Z, sourceSystem=client-service, targetSystem=external-client-api, contentType=application/json, accept=application/json, userAgent=PostmanRuntime/7.29.0, appVersion=1.0.0)
+2025-04-06 17:27:24 [RxCachedThreadScheduler-1] INFO  c.e.c.r.MockClientRepository - Mock: Procesando solicitud para cliente con documento: 12345678, transactionId: TRX-12345
+2025-04-06 17:27:24 [RxCachedThreadScheduler-1] INFO  c.e.c.r.MockClientRepository - Mock: Headers recibidos: {Authorization=Bearer mock-token-1743978444591, X-Source-System=client-service, X-Channel=WEB, X-Request-Timestamp=2024-04-06T15:30:45Z, Accept=application/json, X-Correlation-ID=CORR-67890, X-Transaction-ID=TRX-12345, User-Agent=PostmanRuntime/7.29.0, X-Target-System=external-client-api, X-App-Version=1.0.0, Content-Type=application/json}
+2025-04-06 17:27:25 [RxCachedThreadScheduler-1] INFO  c.e.c.service.ClientServiceImpl - Cliente encontrado con ID: CLI-12345678
+2025-04-06 17:27:25 [RxCachedThreadScheduler-1] INFO  c.e.c.controller.ClientController - Retornando datos para cliente ID: CLI-12345678
+2025-04-06 17:27:44 [http-nio-8080-exec-3] INFO  c.e.c.controller.ClientController - Recibida solicitud de búsqueda para cliente con documento: 12345678, transactionId: TRX-12345
+2025-04-06 17:27:44 [http-nio-8080-exec-3] DEBUG c.e.clientservice.util.HeadersUtil - Headers procesados: ApiHeaders(authorization=Bearer your-access-token, transactionId=TRX-12345, correlationId=CORR-67890, channel=WEB, requestTimestamp=2024-04-06T15:30:45Z, sourceSystem=client-service, targetSystem=external-client-api, contentType=application/json, accept=application/json, userAgent=PostmanRuntime/7.29.0, appVersion=1.0.0)
+2025-04-06 17:27:44 [http-nio-8080-exec-3] INFO  c.e.c.service.ClientServiceImpl - Buscando datos para el cliente con documento: 12345678, transactionId: TRX-12345
+2025-04-06 17:27:44 [http-nio-8080-exec-3] INFO  c.e.c.service.TokenServiceImpl - Obteniendo token de autenticación en endpoint: /auth/token
+2025-04-06 17:27:44 [http-nio-8080-exec-3] INFO  c.e.c.repository.MockTokenRepository - Mock: Generando token para clientId: your-client-id usando endpoint: /auth/token
+2025-04-06 17:27:44 [RxCachedThreadScheduler-1] DEBUG c.e.c.service.TokenServiceImpl - Token obtenido exitosamente
+2025-04-06 17:27:44 [RxCachedThreadScheduler-1] DEBUG c.e.c.service.ClientServiceImpl - Headers preparados para API externa: ApiHeaders(authorization=Bearer mock-token-1743978464894, transactionId=TRX-12345, correlationId=CORR-67890, channel=WEB, requestTimestamp=2024-04-06T15:30:45Z, sourceSystem=client-service, targetSystem=external-client-api, contentType=application/json, accept=application/json, userAgent=PostmanRuntime/7.29.0, appVersion=1.0.0)
+2025-04-06 17:27:44 [RxCachedThreadScheduler-1] INFO  c.e.c.r.MockClientRepository - Mock: Procesando solicitud para cliente con documento: 12345678, transactionId: TRX-12345
+2025-04-06 17:27:44 [RxCachedThreadScheduler-1] INFO  c.e.c.r.MockClientRepository - Mock: Headers recibidos: {Authorization=Bearer mock-token-1743978464894, X-Source-System=client-service, X-Channel=WEB, X-Request-Timestamp=2024-04-06T15:30:45Z, Accept=application/json, X-Correlation-ID=CORR-67890, X-Transaction-ID=TRX-12345, User-Agent=PostmanRuntime/7.29.0, X-Target-System=external-client-api, X-App-Version=1.0.0, Content-Type=application/json}
+2025-04-06 17:27:45 [RxCachedThreadScheduler-1] INFO  c.e.c.service.ClientServiceImpl - Cliente encontrado con ID: CLI-12345678
+2025-04-06 17:27:45 [RxCachedThreadScheduler-1] INFO  c.e.c.controller.ClientController - Retornando datos para cliente ID: CLI-12345678
+2025-04-06 17:27:57 [http-nio-8080-exec-5] INFO  c.e.c.controller.ClientController - Recibida solicitud de búsqueda para cliente con documento: 87654321, transactionId: TRX-54321
+2025-04-06 17:27:57 [http-nio-8080-exec-5] DEBUG c.e.clientservice.util.HeadersUtil - Headers procesados: ApiHeaders(authorization=Bearer test-token-123, transactionId=TRX-54321, correlationId=CORR-MIXED-CASE, channel=MOBILE, requestTimestamp=2024-04-06T16:45:30Z, sourceSystem=mobile-app, targetSystem=customer-database, contentType=application/json, accept=application/json, userAgent=MobileApp/2.0, appVersion=2.0.0)
+2025-04-06 17:27:57 [http-nio-8080-exec-5] INFO  c.e.c.service.ClientServiceImpl - Buscando datos para el cliente con documento: 87654321, transactionId: TRX-54321
+2025-04-06 17:27:57 [http-nio-8080-exec-5] INFO  c.e.c.service.TokenServiceImpl - Obteniendo token de autenticación en endpoint: /auth/token
+2025-04-06 17:27:57 [http-nio-8080-exec-5] INFO  c.e.c.repository.MockTokenRepository - Mock: Generando token para clientId: your-client-id usando endpoint: /auth/token
+2025-04-06 17:27:57 [RxCachedThreadScheduler-1] DEBUG c.e.c.service.TokenServiceImpl - Token obtenido exitosamente
+2025-04-06 17:27:57 [RxCachedThreadScheduler-1] DEBUG c.e.c.service.ClientServiceImpl - Headers preparados para API externa: ApiHeaders(authorization=Bearer mock-token-1743978477742, transactionId=TRX-54321, correlationId=CORR-MIXED-CASE, channel=MOBILE, requestTimestamp=2024-04-06T16:45:30Z, sourceSystem=mobile-app, targetSystem=customer-database, contentType=application/json, accept=application/json, userAgent=MobileApp/2.0, appVersion=2.0.0)
+2025-04-06 17:27:57 [RxCachedThreadScheduler-1] INFO  c.e.c.r.MockClientRepository - Mock: Procesando solicitud para cliente con documento: 87654321, transactionId: TRX-54321
+2025-04-06 17:27:57 [RxCachedThreadScheduler-1] INFO  c.e.c.r.MockClientRepository - Mock: Headers recibidos: {Authorization=Bearer mock-token-1743978477742, X-Source-System=mobile-app, X-Channel=MOBILE, X-Request-Timestamp=2024-04-06T16:45:30Z, Accept=application/json, X-Correlation-ID=CORR-MIXED-CASE, X-Transaction-ID=TRX-54321, User-Agent=MobileApp/2.0, X-Target-System=customer-database, X-App-Version=2.0.0, Content-Type=application/json}
+2025-04-06 17:27:58 [RxCachedThreadScheduler-1] INFO  c.e.c.service.ClientServiceImpl - Cliente encontrado con ID: CLI-87654321
+2025-04-06 17:27:58 [RxCachedThreadScheduler-1] INFO  c.e.c.controller.ClientController - Retornando datos para cliente ID: CLI-87654321
+2025-04-06 17:29:08 [http-nio-8080-exec-10] INFO  c.e.c.controller.ClientController - Recibida solicitud de búsqueda para cliente con documento: 12345678, transactionId: TRX-12345
+2025-04-06 17:29:08 [http-nio-8080-exec-10] DEBUG c.e.clientservice.util.HeadersUtil - Headers procesados: ApiHeaders(authorization=Bearer your-access-token, transactionId=TRX-12345, correlationId=CORR-67890, channel=WEB, requestTimestamp=2024-04-06T15:30:45Z, sourceSystem=client-service, targetSystem=external-client-api, contentType=application/json, accept=application/json, userAgent=PostmanRuntime/7.29.0, appVersion=1.0.0)
+2025-04-06 17:29:08 [http-nio-8080-exec-10] INFO  c.e.c.service.ClientServiceImpl - Buscando datos para el cliente con documento: 12345678, transactionId: TRX-12345
+2025-04-06 17:29:08 [http-nio-8080-exec-10] INFO  c.e.c.service.TokenServiceImpl - Obteniendo token de autenticación en endpoint: /auth/token
+2025-04-06 17:29:08 [http-nio-8080-exec-10] INFO  c.e.c.repository.MockTokenRepository - Mock: Generando token para clientId: your-client-id usando endpoint: /auth/token
+2025-04-06 17:29:08 [RxCachedThreadScheduler-1] DEBUG c.e.c.service.TokenServiceImpl - Token obtenido exitosamente
+2025-04-06 17:29:08 [RxCachedThreadScheduler-1] DEBUG c.e.c.service.ClientServiceImpl - Headers preparados para API externa: ApiHeaders(authorization=Bearer mock-token-1743978548482, transactionId=TRX-12345, correlationId=CORR-67890, channel=WEB, requestTimestamp=2024-04-06T15:30:45Z, sourceSystem=client-service, targetSystem=external-client-api, contentType=application/json, accept=application/json, userAgent=PostmanRuntime/7.29.0, appVersion=1.0.0)
+2025-04-06 17:29:08 [RxCachedThreadScheduler-1] INFO  c.e.c.r.MockClientRepository - Mock: Procesando solicitud para cliente con documento: 12345678, transactionId: TRX-12345
+2025-04-06 17:29:08 [RxCachedThreadScheduler-1] INFO  c.e.c.r.MockClientRepository - Mock: Headers recibidos: {Authorization=Bearer mock-token-1743978548482, X-Source-System=client-service, X-Channel=WEB, X-Request-Timestamp=2024-04-06T15:30:45Z, Accept=application/json, X-Correlation-ID=CORR-67890, X-Transaction-ID=TRX-12345, User-Agent=PostmanRuntime/7.29.0, X-Target-System=external-client-api, X-App-Version=1.0.0, Content-Type=application/json}
+2025-04-06 17:29:08 [RxCachedThreadScheduler-1] INFO  c.e.c.service.ClientServiceImpl - Cliente encontrado con ID: CLI-12345678
+2025-04-06 17:29:08 [RxCachedThreadScheduler-1] INFO  c.e.c.controller.ClientController - Retornando datos para cliente ID: CLI-12345678
+2025-04-06 17:29:18 [http-nio-8080-exec-2] INFO  c.e.c.controller.ClientController - Recibida solicitud de búsqueda para cliente con documento: 99999999, transactionId: TRX-99999
+2025-04-06 17:29:18 [http-nio-8080-exec-2] DEBUG c.e.clientservice.util.HeadersUtil - Headers procesados: ApiHeaders(authorization=Bearer your-access-token, transactionId=TRX-99999, correlationId=CORR-54321, channel=MOBILE, requestTimestamp=2024-04-06T15:35:22Z, sourceSystem=mobile-app, targetSystem=external-client-api, contentType=application/json, accept=application/json, userAgent=AndroidApp/2.1.0, appVersion=2.1.0)
+2025-04-06 17:29:18 [http-nio-8080-exec-2] INFO  c.e.c.service.ClientServiceImpl - Buscando datos para el cliente con documento: 99999999, transactionId: TRX-99999
+2025-04-06 17:29:18 [http-nio-8080-exec-2] INFO  c.e.c.service.TokenServiceImpl - Obteniendo token de autenticación en endpoint: /auth/token
+2025-04-06 17:29:18 [http-nio-8080-exec-2] INFO  c.e.c.repository.MockTokenRepository - Mock: Generando token para clientId: your-client-id usando endpoint: /auth/token
+2025-04-06 17:29:18 [RxCachedThreadScheduler-1] DEBUG c.e.c.service.TokenServiceImpl - Token obtenido exitosamente
+2025-04-06 17:29:18 [RxCachedThreadScheduler-1] DEBUG c.e.c.service.ClientServiceImpl - Headers preparados para API externa: ApiHeaders(authorization=Bearer mock-token-1743978558710, transactionId=TRX-99999, correlationId=CORR-54321, channel=MOBILE, requestTimestamp=2024-04-06T15:35:22Z, sourceSystem=mobile-app, targetSystem=external-client-api, contentType=application/json, accept=application/json, userAgent=AndroidApp/2.1.0, appVersion=2.1.0)
+2025-04-06 17:29:18 [RxCachedThreadScheduler-1] INFO  c.e.c.r.MockClientRepository - Mock: Procesando solicitud para cliente con documento: 99999999, transactionId: TRX-99999
+2025-04-06 17:29:18 [RxCachedThreadScheduler-1] INFO  c.e.c.r.MockClientRepository - Mock: Headers recibidos: {Authorization=Bearer mock-token-1743978558710, X-Source-System=mobile-app, X-Channel=MOBILE, X-Request-Timestamp=2024-04-06T15:35:22Z, Accept=application/json, X-Correlation-ID=CORR-54321, X-Transaction-ID=TRX-99999, User-Agent=AndroidApp/2.1.0, X-Target-System=external-client-api, X-App-Version=2.1.0, Content-Type=application/json}
+2025-04-06 17:29:19 [RxCachedThreadScheduler-1] ERROR c.e.c.service.ClientServiceImpl - Error inesperado al buscar cliente
+java.lang.RuntimeException: Cliente no encontrado
+	at com.example.clientservice.repository.MockClientRepository.getClientData(MockClientRepository.java:41)
+	at com.example.clientservice.service.ClientServiceImpl.lambda$getClientData$0(ClientServiceImpl.java:53)
+	at io.reactivex.rxjava3.internal.operators.single.SingleFlatMap$SingleFlatMapCallback.onSuccess(SingleFlatMap.java:77)
+	at io.reactivex.rxjava3.internal.operators.single.SingleMap$MapSingleObserver.onSuccess(SingleMap.java:65)
+	at io.reactivex.rxjava3.internal.operators.single.SingleDoOnError$DoOnError.onSuccess(SingleDoOnError.java:52)
+	at io.reactivex.rxjava3.internal.operators.single.SingleDoOnSuccess$DoOnSuccess.onSuccess(SingleDoOnSuccess.java:60)
+	at io.reactivex.rxjava3.internal.operators.single.SingleMap$MapSingleObserver.onSuccess(SingleMap.java:65)
+	at io.reactivex.rxjava3.internal.operators.single.SingleJust.subscribeActual(SingleJust.java:30)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleMap.subscribeActual(SingleMap.java:35)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleDoOnSuccess.subscribeActual(SingleDoOnSuccess.java:35)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleDoOnError.subscribeActual(SingleDoOnError.java:35)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleMap.subscribeActual(SingleMap.java:35)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleFlatMap.subscribeActual(SingleFlatMap.java:37)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleMap.subscribeActual(SingleMap.java:35)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleDoOnSuccess.subscribeActual(SingleDoOnSuccess.java:35)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleDoOnError.subscribeActual(SingleDoOnError.java:35)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleResumeNext.subscribeActual(SingleResumeNext.java:39)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleSubscribeOn$SubscribeOnObserver.run(SingleSubscribeOn.java:89)
+	at io.reactivex.rxjava3.core.Scheduler$DisposeTask.run(Scheduler.java:644)
+	at io.reactivex.rxjava3.internal.schedulers.ScheduledRunnable.run(ScheduledRunnable.java:65)
+	at io.reactivex.rxjava3.internal.schedulers.ScheduledRunnable.call(ScheduledRunnable.java:56)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2025-04-06 17:29:19 [http-nio-8080-exec-3] ERROR c.e.c.e.GlobalExceptionHandler - Service error: Error al obtener datos del cliente
+com.example.clientservice.exception.ServiceException: Error al obtener datos del cliente
+	at com.example.clientservice.service.ClientServiceImpl.handleSpecificErrors(ClientServiceImpl.java:130)
+	at io.reactivex.rxjava3.internal.operators.single.SingleResumeNext$ResumeMainSingleObserver.onError(SingleResumeNext.java:73)
+	at io.reactivex.rxjava3.internal.operators.single.SingleDoOnError$DoOnError.onError(SingleDoOnError.java:63)
+	at io.reactivex.rxjava3.internal.operators.single.SingleDoOnSuccess$DoOnSuccess.onError(SingleDoOnSuccess.java:65)
+	at io.reactivex.rxjava3.internal.operators.single.SingleMap$MapSingleObserver.onError(SingleMap.java:70)
+	at io.reactivex.rxjava3.internal.operators.single.SingleFlatMap$SingleFlatMapCallback$FlatMapSingleObserver.onError(SingleFlatMap.java:117)
+	at io.reactivex.rxjava3.internal.disposables.EmptyDisposable.error(EmptyDisposable.java:78)
+	at io.reactivex.rxjava3.internal.operators.single.SingleError.subscribeActual(SingleError.java:41)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleFlatMap$SingleFlatMapCallback.onSuccess(SingleFlatMap.java:85)
+	at io.reactivex.rxjava3.internal.operators.single.SingleMap$MapSingleObserver.onSuccess(SingleMap.java:65)
+	at io.reactivex.rxjava3.internal.operators.single.SingleDoOnError$DoOnError.onSuccess(SingleDoOnError.java:52)
+	at io.reactivex.rxjava3.internal.operators.single.SingleDoOnSuccess$DoOnSuccess.onSuccess(SingleDoOnSuccess.java:60)
+	at io.reactivex.rxjava3.internal.operators.single.SingleMap$MapSingleObserver.onSuccess(SingleMap.java:65)
+	at io.reactivex.rxjava3.internal.operators.single.SingleJust.subscribeActual(SingleJust.java:30)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleMap.subscribeActual(SingleMap.java:35)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleDoOnSuccess.subscribeActual(SingleDoOnSuccess.java:35)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleDoOnError.subscribeActual(SingleDoOnError.java:35)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleMap.subscribeActual(SingleMap.java:35)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleFlatMap.subscribeActual(SingleFlatMap.java:37)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleMap.subscribeActual(SingleMap.java:35)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleDoOnSuccess.subscribeActual(SingleDoOnSuccess.java:35)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleDoOnError.subscribeActual(SingleDoOnError.java:35)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleResumeNext.subscribeActual(SingleResumeNext.java:39)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleSubscribeOn$SubscribeOnObserver.run(SingleSubscribeOn.java:89)
+	at io.reactivex.rxjava3.core.Scheduler$DisposeTask.run(Scheduler.java:644)
+	at io.reactivex.rxjava3.internal.schedulers.ScheduledRunnable.run(ScheduledRunnable.java:65)
+	at io.reactivex.rxjava3.internal.schedulers.ScheduledRunnable.call(ScheduledRunnable.java:56)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.RuntimeException: Cliente no encontrado
+	at com.example.clientservice.repository.MockClientRepository.getClientData(MockClientRepository.java:41)
+	at com.example.clientservice.service.ClientServiceImpl.lambda$getClientData$0(ClientServiceImpl.java:53)
+	at io.reactivex.rxjava3.internal.operators.single.SingleFlatMap$SingleFlatMapCallback.onSuccess(SingleFlatMap.java:77)
+	... 33 common frames omitted
+2025-04-06 17:29:42 [http-nio-8080-exec-4] ERROR c.e.c.e.GlobalExceptionHandler - Validation error: ErrorResponse(code=ERR-001, status=400 BAD_REQUEST, message=Error de validación, timestamp=2025-04-06T17:29:42.331410, path=uri=/api/clients/TRX-INVALID/search, errors=[documentNumber: El número de documento debe tener entre 8 y 20 caracteres, name: El nombre debe tener entre 2 y 100 caracteres])
+2025-04-06 17:30:18 [http-nio-8080-exec-6] ERROR c.e.c.e.GlobalExceptionHandler - Validation error: ErrorResponse(code=ERR-001, status=400 BAD_REQUEST, message=Error de validación, timestamp=2025-04-06T17:30:18.246685, path=uri=/api/clients/TRX-INVALID-DOC/search, errors=[name: El nombre es obligatorio, name: El nombre debe tener entre 2 y 100 caracteres, documentNumber: El número de documento debe tener entre 8 y 20 caracteres, documentNumber: El número de documento es obligatorio])
+2025-04-06 17:30:36 [http-nio-8080-exec-7] INFO  c.e.c.controller.ClientController - Recibida solicitud de búsqueda para cliente con documento: 99999999, transactionId: TRX-NOT-FOUND
+2025-04-06 17:30:36 [http-nio-8080-exec-7] DEBUG c.e.clientservice.util.HeadersUtil - Headers procesados: ApiHeaders(authorization=null, transactionId=TRX-NOT-FOUND, correlationId=CORR-NOT-FOUND-1, channel=null, requestTimestamp=null, sourceSystem=null, targetSystem=null, contentType=application/json, accept=application/json, userAgent=IntelliJ HTTP Client/IntelliJ IDEA 2024.1.6, appVersion=null)
+2025-04-06 17:30:36 [http-nio-8080-exec-7] INFO  c.e.c.service.ClientServiceImpl - Buscando datos para el cliente con documento: 99999999, transactionId: TRX-NOT-FOUND
+2025-04-06 17:30:36 [http-nio-8080-exec-7] INFO  c.e.c.service.TokenServiceImpl - Obteniendo token de autenticación en endpoint: /auth/token
+2025-04-06 17:30:36 [http-nio-8080-exec-7] INFO  c.e.c.repository.MockTokenRepository - Mock: Generando token para clientId: your-client-id usando endpoint: /auth/token
+2025-04-06 17:30:37 [RxCachedThreadScheduler-2] DEBUG c.e.c.service.TokenServiceImpl - Token obtenido exitosamente
+2025-04-06 17:30:37 [RxCachedThreadScheduler-2] DEBUG c.e.c.service.ClientServiceImpl - Headers preparados para API externa: ApiHeaders(authorization=Bearer mock-token-1743978637299, transactionId=TRX-NOT-FOUND, correlationId=CORR-NOT-FOUND-1, channel=WEB, requestTimestamp=2025-04-06T17:30:36.994047, sourceSystem=client-service, targetSystem=null, contentType=application/json, accept=application/json, userAgent=IntelliJ HTTP Client/IntelliJ IDEA 2024.1.6, appVersion=1.0.0)
+2025-04-06 17:30:37 [RxCachedThreadScheduler-2] INFO  c.e.c.r.MockClientRepository - Mock: Procesando solicitud para cliente con documento: 99999999, transactionId: TRX-NOT-FOUND
+2025-04-06 17:30:37 [RxCachedThreadScheduler-2] INFO  c.e.c.r.MockClientRepository - Mock: Headers recibidos: {Authorization=Bearer mock-token-1743978637299, X-Source-System=client-service, X-Channel=WEB, X-Request-Timestamp=2025-04-06T17:30:36.994047, Accept=application/json, X-Correlation-ID=CORR-NOT-FOUND-1, X-Transaction-ID=TRX-NOT-FOUND, User-Agent=IntelliJ HTTP Client/IntelliJ IDEA 2024.1.6, X-App-Version=1.0.0, Content-Type=application/json}
+2025-04-06 17:30:37 [RxCachedThreadScheduler-2] ERROR c.e.c.service.ClientServiceImpl - Error inesperado al buscar cliente
+java.lang.RuntimeException: Cliente no encontrado
+	at com.example.clientservice.repository.MockClientRepository.getClientData(MockClientRepository.java:41)
+	at com.example.clientservice.service.ClientServiceImpl.lambda$getClientData$0(ClientServiceImpl.java:53)
+	at io.reactivex.rxjava3.internal.operators.single.SingleFlatMap$SingleFlatMapCallback.onSuccess(SingleFlatMap.java:77)
+	at io.reactivex.rxjava3.internal.operators.single.SingleMap$MapSingleObserver.onSuccess(SingleMap.java:65)
+	at io.reactivex.rxjava3.internal.operators.single.SingleDoOnError$DoOnError.onSuccess(SingleDoOnError.java:52)
+	at io.reactivex.rxjava3.internal.operators.single.SingleDoOnSuccess$DoOnSuccess.onSuccess(SingleDoOnSuccess.java:60)
+	at io.reactivex.rxjava3.internal.operators.single.SingleMap$MapSingleObserver.onSuccess(SingleMap.java:65)
+	at io.reactivex.rxjava3.internal.operators.single.SingleJust.subscribeActual(SingleJust.java:30)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleMap.subscribeActual(SingleMap.java:35)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleDoOnSuccess.subscribeActual(SingleDoOnSuccess.java:35)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleDoOnError.subscribeActual(SingleDoOnError.java:35)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleMap.subscribeActual(SingleMap.java:35)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleFlatMap.subscribeActual(SingleFlatMap.java:37)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleMap.subscribeActual(SingleMap.java:35)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleDoOnSuccess.subscribeActual(SingleDoOnSuccess.java:35)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleDoOnError.subscribeActual(SingleDoOnError.java:35)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleResumeNext.subscribeActual(SingleResumeNext.java:39)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleSubscribeOn$SubscribeOnObserver.run(SingleSubscribeOn.java:89)
+	at io.reactivex.rxjava3.core.Scheduler$DisposeTask.run(Scheduler.java:644)
+	at io.reactivex.rxjava3.internal.schedulers.ScheduledRunnable.run(ScheduledRunnable.java:65)
+	at io.reactivex.rxjava3.internal.schedulers.ScheduledRunnable.call(ScheduledRunnable.java:56)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2025-04-06 17:30:37 [http-nio-8080-exec-8] ERROR c.e.c.e.GlobalExceptionHandler - Service error: Error al obtener datos del cliente
+com.example.clientservice.exception.ServiceException: Error al obtener datos del cliente
+	at com.example.clientservice.service.ClientServiceImpl.handleSpecificErrors(ClientServiceImpl.java:130)
+	at io.reactivex.rxjava3.internal.operators.single.SingleResumeNext$ResumeMainSingleObserver.onError(SingleResumeNext.java:73)
+	at io.reactivex.rxjava3.internal.operators.single.SingleDoOnError$DoOnError.onError(SingleDoOnError.java:63)
+	at io.reactivex.rxjava3.internal.operators.single.SingleDoOnSuccess$DoOnSuccess.onError(SingleDoOnSuccess.java:65)
+	at io.reactivex.rxjava3.internal.operators.single.SingleMap$MapSingleObserver.onError(SingleMap.java:70)
+	at io.reactivex.rxjava3.internal.operators.single.SingleFlatMap$SingleFlatMapCallback$FlatMapSingleObserver.onError(SingleFlatMap.java:117)
+	at io.reactivex.rxjava3.internal.disposables.EmptyDisposable.error(EmptyDisposable.java:78)
+	at io.reactivex.rxjava3.internal.operators.single.SingleError.subscribeActual(SingleError.java:41)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleFlatMap$SingleFlatMapCallback.onSuccess(SingleFlatMap.java:85)
+	at io.reactivex.rxjava3.internal.operators.single.SingleMap$MapSingleObserver.onSuccess(SingleMap.java:65)
+	at io.reactivex.rxjava3.internal.operators.single.SingleDoOnError$DoOnError.onSuccess(SingleDoOnError.java:52)
+	at io.reactivex.rxjava3.internal.operators.single.SingleDoOnSuccess$DoOnSuccess.onSuccess(SingleDoOnSuccess.java:60)
+	at io.reactivex.rxjava3.internal.operators.single.SingleMap$MapSingleObserver.onSuccess(SingleMap.java:65)
+	at io.reactivex.rxjava3.internal.operators.single.SingleJust.subscribeActual(SingleJust.java:30)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleMap.subscribeActual(SingleMap.java:35)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleDoOnSuccess.subscribeActual(SingleDoOnSuccess.java:35)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleDoOnError.subscribeActual(SingleDoOnError.java:35)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleMap.subscribeActual(SingleMap.java:35)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleFlatMap.subscribeActual(SingleFlatMap.java:37)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleMap.subscribeActual(SingleMap.java:35)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleDoOnSuccess.subscribeActual(SingleDoOnSuccess.java:35)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleDoOnError.subscribeActual(SingleDoOnError.java:35)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleResumeNext.subscribeActual(SingleResumeNext.java:39)
+	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+	at io.reactivex.rxjava3.internal.operators.single.SingleSubscribeOn$SubscribeOnObserver.run(SingleSubscribeOn.java:89)
+	at io.reactivex.rxjava3.core.Scheduler$DisposeTask.run(Scheduler.java:644)
+	at io.reactivex.rxjava3.internal.schedulers.ScheduledRunnable.run(ScheduledRunnable.java:65)
+	at io.reactivex.rxjava3.internal.schedulers.ScheduledRunnable.call(ScheduledRunnable.java:56)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.RuntimeException: Cliente no encontrado
+	at com.example.clientservice.repository.MockClientRepository.getClientData(MockClientRepository.java:41)
+	at com.example.clientservice.service.ClientServiceImpl.lambda$getClientData$0(ClientServiceImpl.java:53)
+	at io.reactivex.rxjava3.internal.operators.single.SingleFlatMap$SingleFlatMapCallback.onSuccess(SingleFlatMap.java:77)
+	... 33 common frames omitted
+2025-04-06 17:30:42 [http-nio-8080-exec-9] INFO  c.e.c.controller.ClientController - Recibida solicitud de búsqueda para cliente con documento: 10000000, transactionId: TRX-TIMEOUT
+2025-04-06 17:30:42 [http-nio-8080-exec-9] DEBUG c.e.clientservice.util.HeadersUtil - Headers procesados: ApiHeaders(authorization=null, transactionId=TRX-TIMEOUT, correlationId=CORR-TIMEOUT-1, channel=null, requestTimestamp=null, sourceSystem=null, targetSystem=null, contentType=application/json, accept=application/json, userAgent=IntelliJ HTTP Client/IntelliJ IDEA 2024.1.6, appVersion=null)
+2025-04-06 17:30:42 [http-nio-8080-exec-9] INFO  c.e.c.service.ClientServiceImpl - Buscando datos para el cliente con documento: 10000000, transactionId: TRX-TIMEOUT
+2025-04-06 17:30:42 [http-nio-8080-exec-9] INFO  c.e.c.service.TokenServiceImpl - Obteniendo token de autenticación en endpoint: /auth/token
+2025-04-06 17:30:42 [http-nio-8080-exec-9] INFO  c.e.c.repository.MockTokenRepository - Mock: Generando token para clientId: your-client-id usando endpoint: /auth/token
+2025-04-06 17:30:42 [RxCachedThreadScheduler-2] DEBUG c.e.c.service.TokenServiceImpl - Token obtenido exitosamente
+2025-04-06 17:30:42 [RxCachedThreadScheduler-2] DEBUG c.e.c.service.ClientServiceImpl - Headers preparados para API externa: ApiHeaders(authorization=Bearer mock-token-1743978642855, transactionId=TRX-TIMEOUT, correlationId=CORR-TIMEOUT-1, channel=WEB, requestTimestamp=2025-04-06T17:30:42.551692, sourceSystem=client-service, targetSystem=null, contentType=application/json, accept=application/json, userAgent=IntelliJ HTTP Client/IntelliJ IDEA 2024.1.6, appVersion=1.0.0)
+2025-04-06 17:30:42 [RxCachedThreadScheduler-2] INFO  c.e.c.r.MockClientRepository - Mock: Procesando solicitud para cliente con documento: 10000000, transactionId: TRX-TIMEOUT
+2025-04-06 17:30:42 [RxCachedThreadScheduler-2] INFO  c.e.c.r.MockClientRepository - Mock: Headers recibidos: {Authorization=Bearer mock-token-1743978642855, X-Source-System=client-service, X-Channel=WEB, X-Request-Timestamp=2025-04-06T17:30:42.551692, Accept=application/json, X-Correlation-ID=CORR-TIMEOUT-1, X-Transaction-ID=TRX-TIMEOUT, User-Agent=IntelliJ HTTP Client/IntelliJ IDEA 2024.1.6, X-App-Version=1.0.0, Content-Type=application/json}
+2025-04-06 17:30:43 [RxCachedThreadScheduler-2] INFO  c.e.c.service.ClientServiceImpl - Cliente encontrado con ID: CLI-10000000
+2025-04-06 17:30:43 [RxCachedThreadScheduler-2] INFO  c.e.c.controller.ClientController - Retornando datos para cliente ID: CLI-10000000
+2025-04-06 17:31:22 [main] INFO  c.e.c.ClientServiceApplication - Starting ClientServiceApplication using Java 11.0.21 on rodrigor.local with PID 40834 (/Users/rodrigoramirezrodriguez/Desktop/Cursos/BCP/client-service-project-rxjava/target/classes started by rodrigoramirezrodriguez in /Users/rodrigoramirezrodriguez/Desktop/Cursos/BCP/client-service-project-rxjava)
+2025-04-06 17:31:22 [main] DEBUG c.e.c.ClientServiceApplication - Running with Spring Boot v2.7.0, Spring v5.3.20
+2025-04-06 17:31:22 [main] INFO  c.e.c.ClientServiceApplication - The following 1 profile is active: "dev"
+2025-04-06 17:31:23 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2025-04-06 17:31:23 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-04-06 17:31:23 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.63]
+2025-04-06 17:31:23 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-04-06 17:31:23 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 749 ms
+2025-04-06 17:31:23 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoint(s) beneath base path '/actuator'
+2025-04-06 17:31:23 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2025-04-06 17:31:23 [main] INFO  c.e.c.ClientServiceApplication - Started ClientServiceApplication in 1.747 seconds (JVM running for 2.219)
+2025-04-06 17:31:23 [main] INFO  c.e.c.ClientServiceApplication - 
+----------------------------------------------------------
+	Aplicación 'client-service' está ejecutándose!
+	Acceso local: 		http://localhost:8080/
+	Acceso externo: 	http://127.0.0.1:8080/
+	Perfil(es): 		dev
+----------------------------------------------------------
+2025-04-06 17:31:24 [RMI TCP Connection(1)-127.0.0.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-06 17:31:24 [RMI TCP Connection(1)-127.0.0.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-04-06 17:31:24 [RMI TCP Connection(1)-127.0.0.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-04-06 17:31:32 [http-nio-8080-exec-1] INFO  c.e.c.controller.ClientController - Recibida solicitud de búsqueda para cliente con documento: 10000000, transactionId: TRX-TIMEOUT
+2025-04-06 17:31:32 [http-nio-8080-exec-1] DEBUG c.e.clientservice.util.HeadersUtil - Headers procesados: ApiHeaders(authorization=null, transactionId=TRX-TIMEOUT, correlationId=CORR-TIMEOUT-1, channel=null, requestTimestamp=null, sourceSystem=null, targetSystem=null, contentType=application/json, accept=application/json, userAgent=IntelliJ HTTP Client/IntelliJ IDEA 2024.1.6, appVersion=null)
+2025-04-06 17:31:32 [http-nio-8080-exec-1] INFO  c.e.c.service.ClientServiceImpl - Buscando datos para el cliente con documento: 10000000, transactionId: TRX-TIMEOUT
+2025-04-06 17:31:32 [http-nio-8080-exec-1] INFO  c.e.c.service.TokenServiceImpl - Obteniendo token de autenticación en endpoint: /auth/token
+2025-04-06 17:31:32 [http-nio-8080-exec-1] INFO  c.e.c.repository.MockTokenRepository - Mock: Generando token para clientId: your-client-id usando endpoint: /auth/token
+2025-04-06 17:31:32 [RxCachedThreadScheduler-1] DEBUG c.e.c.service.TokenServiceImpl - Token obtenido exitosamente
+2025-04-06 17:31:32 [RxCachedThreadScheduler-1] DEBUG c.e.c.service.ClientServiceImpl - Headers preparados para API externa: ApiHeaders(authorization=Bearer mock-token-1743978692831, transactionId=TRX-TIMEOUT, correlationId=CORR-TIMEOUT-1, channel=WEB, requestTimestamp=2025-04-06T17:31:32.525711, sourceSystem=client-service, targetSystem=null, contentType=application/json, accept=application/json, userAgent=IntelliJ HTTP Client/IntelliJ IDEA 2024.1.6, appVersion=1.0.0)
+2025-04-06 17:31:32 [RxCachedThreadScheduler-1] INFO  c.e.c.r.MockClientRepository - Mock: Procesando solicitud para cliente con documento: 10000000, transactionId: TRX-TIMEOUT
+2025-04-06 17:31:32 [RxCachedThreadScheduler-1] INFO  c.e.c.r.MockClientRepository - Mock: Headers recibidos: {Authorization=Bearer mock-token-1743978692831, X-Source-System=client-service, X-Channel=WEB, X-Request-Timestamp=2025-04-06T17:31:32.525711, Accept=application/json, X-Correlation-ID=CORR-TIMEOUT-1, X-Transaction-ID=TRX-TIMEOUT, User-Agent=IntelliJ HTTP Client/IntelliJ IDEA 2024.1.6, X-App-Version=1.0.0, Content-Type=application/json}
+2025-04-06 17:32:03 [http-nio-8080-exec-2] ERROR c.e.c.e.GlobalExceptionHandler - Unexpected error: 
+org.springframework.web.context.request.async.AsyncRequestTimeoutException: null
+	at org.springframework.web.context.request.async.TimeoutDeferredResultProcessingInterceptor.handleTimeout(TimeoutDeferredResultProcessingInterceptor.java:42)
+	at org.springframework.web.context.request.async.DeferredResultInterceptorChain.triggerAfterTimeout(DeferredResultInterceptorChain.java:79)
+	at org.springframework.web.context.request.async.WebAsyncManager.lambda$startDeferredResultProcessing$5(WebAsyncManager.java:438)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+	at org.springframework.web.context.request.async.StandardServletAsyncWebRequest.onTimeout(StandardServletAsyncWebRequest.java:151)
+	at org.apache.catalina.core.AsyncListenerWrapper.fireOnTimeout(AsyncListenerWrapper.java:44)
+	at org.apache.catalina.core.AsyncContextImpl.timeout(AsyncContextImpl.java:135)
+	at org.apache.catalina.connector.CoyoteAdapter.asyncDispatch(CoyoteAdapter.java:147)
+	at org.apache.coyote.AbstractProcessor.dispatch(AbstractProcessor.java:241)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2025-04-06 17:56:35 [main] INFO  c.e.c.ClientServiceApplication - Starting ClientServiceApplication using Java 11.0.21 on rodrigor.local with PID 41062 (/Users/rodrigoramirezrodriguez/Desktop/Cursos/BCP/client-service-project-rxjava/target/classes started by rodrigoramirezrodriguez in /Users/rodrigoramirezrodriguez/Desktop/Cursos/BCP/client-service-project-rxjava)
+2025-04-06 17:56:35 [main] DEBUG c.e.c.ClientServiceApplication - Running with Spring Boot v2.7.0, Spring v5.3.20
+2025-04-06 17:56:35 [main] INFO  c.e.c.ClientServiceApplication - The following 1 profile is active: "dev"
+2025-04-06 17:56:36 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2025-04-06 17:56:36 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-04-06 17:56:36 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.63]
+2025-04-06 17:56:36 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-04-06 17:56:36 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 890 ms
+2025-04-06 17:56:37 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoint(s) beneath base path '/actuator'
+2025-04-06 17:56:37 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2025-04-06 17:56:37 [main] INFO  c.e.c.ClientServiceApplication - Started ClientServiceApplication in 2.081 seconds (JVM running for 2.587)
+2025-04-06 17:56:37 [main] INFO  c.e.c.ClientServiceApplication - 
+----------------------------------------------------------
+	Aplicación 'client-service' está ejecutándose!
+	Acceso local: 		http://localhost:8080/
+	Acceso externo: 	http://127.0.0.1:8080/
+	Perfil(es): 		dev
+----------------------------------------------------------
+2025-04-06 17:56:37 [RMI TCP Connection(2)-127.0.0.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-06 17:56:37 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-04-06 17:56:37 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2025-04-06 17:57:38 [http-nio-8080-exec-1] INFO  c.e.c.controller.ClientController - Recibida solicitud de búsqueda para cliente con documento: 88888888, transactionId: TRX-TIMEOUT
+2025-04-06 17:57:38 [http-nio-8080-exec-1] DEBUG c.e.clientservice.util.HeadersUtil - Headers procesados: ApiHeaders(authorization=null, transactionId=TRX-TIMEOUT, correlationId=CORR-TIMEOUT-1, channel=null, requestTimestamp=null, sourceSystem=null, targetSystem=null, contentType=application/json, accept=application/json, userAgent=IntelliJ HTTP Client/IntelliJ IDEA 2024.1.6, appVersion=null)
+2025-04-06 17:57:38 [http-nio-8080-exec-1] INFO  c.e.c.service.ClientServiceImpl - Buscando datos para el cliente con documento: 88888888, transactionId: TRX-TIMEOUT
+2025-04-06 17:57:38 [http-nio-8080-exec-1] INFO  c.e.c.service.TokenServiceImpl - Obteniendo token de autenticación en endpoint: /auth/token
+2025-04-06 17:57:38 [http-nio-8080-exec-1] INFO  c.e.c.repository.MockTokenRepository - Mock: Generando token para clientId: your-client-id usando endpoint: /auth/token
+2025-04-06 17:57:38 [RxCachedThreadScheduler-1] DEBUG c.e.c.service.TokenServiceImpl - Token obtenido exitosamente
+2025-04-06 17:57:38 [RxCachedThreadScheduler-1] DEBUG c.e.c.service.ClientServiceImpl - Headers preparados para API externa: ApiHeaders(authorization=Bearer mock-token-1743980258936, transactionId=TRX-TIMEOUT, correlationId=CORR-TIMEOUT-1, channel=WEB, requestTimestamp=2025-04-06T17:57:38.635937, sourceSystem=client-service, targetSystem=null, contentType=application/json, accept=application/json, userAgent=IntelliJ HTTP Client/IntelliJ IDEA 2024.1.6, appVersion=1.0.0)
+2025-04-06 17:57:38 [RxCachedThreadScheduler-1] INFO  c.e.c.r.MockClientRepository - Mock: Procesando solicitud para cliente con documento: 88888888, transactionId: TRX-TIMEOUT
+2025-04-06 17:57:38 [RxCachedThreadScheduler-1] INFO  c.e.c.r.MockClientRepository - Mock: Headers recibidos: {Authorization=Bearer mock-token-1743980258936, X-Source-System=client-service, X-Channel=WEB, X-Request-Timestamp=2025-04-06T17:57:38.635937, Accept=application/json, X-Correlation-ID=CORR-TIMEOUT-1, X-Transaction-ID=TRX-TIMEOUT, User-Agent=IntelliJ HTTP Client/IntelliJ IDEA 2024.1.6, X-App-Version=1.0.0, Content-Type=application/json}
+2025-04-06 17:58:09 [http-nio-8080-exec-2] ERROR c.e.c.e.GlobalExceptionHandler - Unexpected error: 
+org.springframework.web.context.request.async.AsyncRequestTimeoutException: null
+	at org.springframework.web.context.request.async.TimeoutDeferredResultProcessingInterceptor.handleTimeout(TimeoutDeferredResultProcessingInterceptor.java:42)
+	at org.springframework.web.context.request.async.DeferredResultInterceptorChain.triggerAfterTimeout(DeferredResultInterceptorChain.java:79)
+	at org.springframework.web.context.request.async.WebAsyncManager.lambda$startDeferredResultProcessing$5(WebAsyncManager.java:438)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+	at org.springframework.web.context.request.async.StandardServletAsyncWebRequest.onTimeout(StandardServletAsyncWebRequest.java:151)
+	at org.apache.catalina.core.AsyncListenerWrapper.fireOnTimeout(AsyncListenerWrapper.java:44)
+	at org.apache.catalina.core.AsyncContextImpl.timeout(AsyncContextImpl.java:135)
+	at org.apache.catalina.connector.CoyoteAdapter.asyncDispatch(CoyoteAdapter.java:147)
+	at org.apache.coyote.AbstractProcessor.dispatch(AbstractProcessor.java:241)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2025-04-06 18:00:50 [main] INFO  c.e.c.ClientServiceApplication - Starting ClientServiceApplication using Java 11.0.21 on rodrigor.local with PID 41130 (/Users/rodrigoramirezrodriguez/Desktop/Cursos/BCP/client-service-project-rxjava/target/classes started by rodrigoramirezrodriguez in /Users/rodrigoramirezrodriguez/Desktop/Cursos/BCP/client-service-project-rxjava)
+2025-04-06 18:00:50 [main] DEBUG c.e.c.ClientServiceApplication - Running with Spring Boot v2.7.0, Spring v5.3.20
+2025-04-06 18:00:50 [main] INFO  c.e.c.ClientServiceApplication - The following 1 profile is active: "dev"
+2025-04-06 18:00:51 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2025-04-06 18:00:51 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-04-06 18:00:51 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.63]
+2025-04-06 18:00:51 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-04-06 18:00:51 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 710 ms
+2025-04-06 18:00:51 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoint(s) beneath base path '/actuator'
+2025-04-06 18:00:51 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2025-04-06 18:00:51 [main] INFO  c.e.c.ClientServiceApplication - Started ClientServiceApplication in 1.614 seconds (JVM running for 2.089)
+2025-04-06 18:00:51 [main] INFO  c.e.c.ClientServiceApplication - 
+----------------------------------------------------------
+	Aplicación 'client-service' está ejecutándose!
+	Acceso local: 		http://localhost:8080/
+	Acceso externo: 	http://127.0.0.1:8080/
+	Perfil(es): 		dev
+----------------------------------------------------------
+2025-04-06 18:00:51 [RMI TCP Connection(1)-127.0.0.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-06 18:00:51 [RMI TCP Connection(1)-127.0.0.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-04-06 18:00:51 [RMI TCP Connection(1)-127.0.0.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-04-06 18:00:54 [http-nio-8080-exec-1] INFO  c.e.c.controller.ClientController - Recibida solicitud de búsqueda para cliente con documento: 88888888, transactionId: TRX-TIMEOUT
+2025-04-06 18:00:54 [http-nio-8080-exec-1] DEBUG c.e.clientservice.util.HeadersUtil - Headers procesados: ApiHeaders(authorization=null, transactionId=TRX-TIMEOUT, correlationId=CORR-TIMEOUT-1, channel=null, requestTimestamp=null, sourceSystem=null, targetSystem=null, contentType=application/json, accept=application/json, userAgent=IntelliJ HTTP Client/IntelliJ IDEA 2024.1.6, appVersion=null)
+2025-04-06 18:00:54 [http-nio-8080-exec-1] INFO  c.e.c.service.ClientServiceImpl - Buscando datos para el cliente con documento: 88888888, transactionId: TRX-TIMEOUT
+2025-04-06 18:00:54 [http-nio-8080-exec-1] INFO  c.e.c.service.TokenServiceImpl - Obteniendo token de autenticación en endpoint: /auth/token
+2025-04-06 18:00:54 [http-nio-8080-exec-1] INFO  c.e.c.repository.MockTokenRepository - Mock: Generando token para clientId: your-client-id usando endpoint: /auth/token
+2025-04-06 18:00:55 [RxCachedThreadScheduler-1] DEBUG c.e.c.service.TokenServiceImpl - Token obtenido exitosamente
+2025-04-06 18:00:55 [RxCachedThreadScheduler-1] DEBUG c.e.c.service.ClientServiceImpl - Headers preparados para API externa: ApiHeaders(authorization=Bearer mock-token-1743980455170, transactionId=TRX-TIMEOUT, correlationId=CORR-TIMEOUT-1, channel=WEB, requestTimestamp=2025-04-06T18:00:54.868189, sourceSystem=client-service, targetSystem=null, contentType=application/json, accept=application/json, userAgent=IntelliJ HTTP Client/IntelliJ IDEA 2024.1.6, appVersion=1.0.0)
+2025-04-06 18:00:55 [RxCachedThreadScheduler-1] INFO  c.e.c.r.MockClientRepository - Mock: Procesando solicitud para cliente con documento: 88888888, transactionId: TRX-TIMEOUT
+2025-04-06 18:00:55 [RxCachedThreadScheduler-1] INFO  c.e.c.r.MockClientRepository - Mock: Headers recibidos: {Authorization=Bearer mock-token-1743980455170, X-Source-System=client-service, X-Channel=WEB, X-Request-Timestamp=2025-04-06T18:00:54.868189, Accept=application/json, X-Correlation-ID=CORR-TIMEOUT-1, X-Transaction-ID=TRX-TIMEOUT, User-Agent=IntelliJ HTTP Client/IntelliJ IDEA 2024.1.6, X-App-Version=1.0.0, Content-Type=application/json}
+2025-04-06 18:01:25 [http-nio-8080-exec-2] ERROR c.e.c.e.GlobalExceptionHandler - Unexpected error: 
+org.springframework.web.context.request.async.AsyncRequestTimeoutException: null
+	at org.springframework.web.context.request.async.TimeoutDeferredResultProcessingInterceptor.handleTimeout(TimeoutDeferredResultProcessingInterceptor.java:42)
+	at org.springframework.web.context.request.async.DeferredResultInterceptorChain.triggerAfterTimeout(DeferredResultInterceptorChain.java:79)
+	at org.springframework.web.context.request.async.WebAsyncManager.lambda$startDeferredResultProcessing$5(WebAsyncManager.java:438)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+	at org.springframework.web.context.request.async.StandardServletAsyncWebRequest.onTimeout(StandardServletAsyncWebRequest.java:151)
+	at org.apache.catalina.core.AsyncListenerWrapper.fireOnTimeout(AsyncListenerWrapper.java:44)
+	at org.apache.catalina.core.AsyncContextImpl.timeout(AsyncContextImpl.java:135)
+	at org.apache.catalina.connector.CoyoteAdapter.asyncDispatch(CoyoteAdapter.java:147)
+	at org.apache.coyote.AbstractProcessor.dispatch(AbstractProcessor.java:241)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2025-04-06 18:02:38 [http-nio-8080-exec-3] INFO  c.e.c.controller.ClientController - Recibida solicitud de búsqueda para cliente con documento: 88888888, transactionId: test-timeout
+2025-04-06 18:02:38 [http-nio-8080-exec-3] DEBUG c.e.clientservice.util.HeadersUtil - Headers procesados: ApiHeaders(authorization=null, transactionId=timeout-test-001, correlationId=null, channel=WEB, requestTimestamp=null, sourceSystem=null, targetSystem=null, contentType=application/json, accept=application/json, userAgent=IntelliJ HTTP Client/IntelliJ IDEA 2024.1.6, appVersion=null)
+2025-04-06 18:02:38 [http-nio-8080-exec-3] INFO  c.e.c.service.ClientServiceImpl - Buscando datos para el cliente con documento: 88888888, transactionId: test-timeout
+2025-04-06 18:02:38 [http-nio-8080-exec-3] INFO  c.e.c.service.TokenServiceImpl - Obteniendo token de autenticación en endpoint: /auth/token
+2025-04-06 18:02:38 [http-nio-8080-exec-3] INFO  c.e.c.repository.MockTokenRepository - Mock: Generando token para clientId: your-client-id usando endpoint: /auth/token
+2025-04-06 18:02:39 [RxCachedThreadScheduler-1] DEBUG c.e.c.service.TokenServiceImpl - Token obtenido exitosamente
+2025-04-06 18:02:39 [RxCachedThreadScheduler-1] DEBUG c.e.c.service.ClientServiceImpl - Headers preparados para API externa: ApiHeaders(authorization=Bearer mock-token-1743980559186, transactionId=test-timeout, correlationId=null, channel=WEB, requestTimestamp=2025-04-06T18:02:38.882322, sourceSystem=client-service, targetSystem=null, contentType=application/json, accept=application/json, userAgent=IntelliJ HTTP Client/IntelliJ IDEA 2024.1.6, appVersion=1.0.0)
+2025-04-06 18:02:39 [RxCachedThreadScheduler-1] INFO  c.e.c.r.MockClientRepository - Mock: Procesando solicitud para cliente con documento: 88888888, transactionId: test-timeout
+2025-04-06 18:02:39 [RxCachedThreadScheduler-1] INFO  c.e.c.r.MockClientRepository - Mock: Headers recibidos: {Authorization=Bearer mock-token-1743980559186, X-Source-System=client-service, X-Channel=WEB, X-Request-Timestamp=2025-04-06T18:02:38.882322, Accept=application/json, X-Transaction-ID=test-timeout, User-Agent=IntelliJ HTTP Client/IntelliJ IDEA 2024.1.6, X-App-Version=1.0.0, Content-Type=application/json}
+2025-04-06 18:03:09 [http-nio-8080-exec-4] ERROR c.e.c.e.GlobalExceptionHandler - Unexpected error: 
+org.springframework.web.context.request.async.AsyncRequestTimeoutException: null
+	at org.springframework.web.context.request.async.TimeoutDeferredResultProcessingInterceptor.handleTimeout(TimeoutDeferredResultProcessingInterceptor.java:42)
+	at org.springframework.web.context.request.async.DeferredResultInterceptorChain.triggerAfterTimeout(DeferredResultInterceptorChain.java:79)
+	at org.springframework.web.context.request.async.WebAsyncManager.lambda$startDeferredResultProcessing$5(WebAsyncManager.java:438)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+	at org.springframework.web.context.request.async.StandardServletAsyncWebRequest.onTimeout(StandardServletAsyncWebRequest.java:151)
+	at org.apache.catalina.core.AsyncListenerWrapper.fireOnTimeout(AsyncListenerWrapper.java:44)
+	at org.apache.catalina.core.AsyncContextImpl.timeout(AsyncContextImpl.java:135)
+	at org.apache.catalina.connector.CoyoteAdapter.asyncDispatch(CoyoteAdapter.java:147)
+	at org.apache.coyote.AbstractProcessor.dispatch(AbstractProcessor.java:241)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
