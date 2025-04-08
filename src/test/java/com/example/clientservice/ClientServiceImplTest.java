@@ -1,33 +1,28 @@
 package com.example.clientservice;
 
-
 import com.example.clientservice.mapper.ClientMapper;
 import com.example.clientservice.model.ApiHeaders;
 import com.example.clientservice.model.ClientRequest;
 import com.example.clientservice.model.ClientResponse;
 import com.example.clientservice.repository.ClientRepository;
-import com.example.clientservice.repository.TokenRepository;
 import com.example.clientservice.service.ClientServiceImpl;
 import com.example.clientservice.service.TokenService;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.util.ReflectionTestUtils;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Test directo del ClientServiceImpl que le permite ejecutar
  * su flujo completo sin modificaciones.
  */
-@RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("dev") // Usar perfil de desarrollo para usar MockRepositories existentes
-public class ClientServiceImplTest {
+class ClientServiceImplTest {
 
     @Autowired
     private ClientRepository clientRepository;
@@ -41,8 +36,8 @@ public class ClientServiceImplTest {
     // El servicio que probaremos directamente
     private ClientServiceImpl clientServiceImpl;
 
-    @Before
-    public void setUp() {
+    @BeforeEach
+    void setUp() {
         // Crear una instancia directa sin usar ningún mock
         clientServiceImpl = new ClientServiceImpl(
                 clientRepository,
@@ -56,7 +51,7 @@ public class ClientServiceImplTest {
     }
 
     @Test
-    public void testDirectServiceCall() {
+    void testDirectServiceCall() {
         // Preparamos los datos para llamar directamente al servicio
         String transactionId = "TX-DIRECT-" + System.currentTimeMillis();
         ClientRequest request = ClientRequest.builder()
@@ -79,13 +74,13 @@ public class ClientServiceImplTest {
                 .blockingGet(); // Espera y obtiene el resultado
 
         // Verificamos resultados
-        assertNotNull("Debe retornar una respuesta", response);
-        assertEquals("El ID debe tener el formato correcto", "CLI-" + request.getDocumentNumber(), response.getId());
-        assertEquals("El documento debe coincidir", request.getDocumentNumber(), response.getDocumentNumber());
-        assertEquals("El nombre debe coincidir", request.getName(), response.getName());
-        assertNotNull("El correo no debe ser nulo", response.getEmail());
-        assertNotNull("La dirección no debe ser nula", response.getAddress());
-        assertEquals("El estado debe ser ACTIVE", "ACTIVE", response.getStatus());
+        assertNotNull(response, "Debe retornar una respuesta");
+        assertEquals("CLI-" + request.getDocumentNumber(), response.getId(), "El ID debe tener el formato correcto");
+        assertEquals(request.getDocumentNumber(), response.getDocumentNumber(), "El documento debe coincidir");
+        assertEquals(request.getName(), response.getName(), "El nombre debe coincidir");
+        assertNotNull(response.getEmail(), "El correo no debe ser nulo");
+        assertNotNull(response.getAddress(), "La dirección no debe ser nula");
+        assertEquals("ACTIVE", response.getStatus(), "El estado debe ser ACTIVE");
 
         // Imprimimos la respuesta para verificación visual
         System.out.println("=== RESULTADO DE LA LLAMADA DIRECTA ===");
