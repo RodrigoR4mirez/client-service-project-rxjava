@@ -50,32 +50,16 @@ public class RetrofitConfig {
                 .connectTimeout(connectTimeout, TimeUnit.SECONDS)
                 .readTimeout(readTimeout, TimeUnit.SECONDS)
                 .writeTimeout(writeTimeout, TimeUnit.SECONDS)
-                .addInterceptor(timeoutInterceptor())
-                .addInterceptor(headerInterceptor())
+                .addInterceptor(chain -> {
+                    Request original = chain.request();
+                    Request.Builder requestBuilder = original.newBuilder()
+                            .header("Content-Type", "application/json")
+                            .header("Accept", "application/json")
+                            .header("X-App-Version", "1.0.0");
+                    return chain.proceed(requestBuilder.build());
+                })
                 .addInterceptor(loggingInterceptor)
                 .build();
-    }
-
-    private Interceptor timeoutInterceptor() {
-        return chain -> {
-            try {
-                return chain.proceed(chain.request());
-            } catch (IOException e) {
-                throw new TimeoutExceptionHandler("API call timed out", e);
-            }
-        };
-    }
-
-    private Interceptor headerInterceptor() {
-        return chain -> {
-            Request original = chain.request();
-            Request.Builder requestBuilder = original.newBuilder()
-                    .header("Content-Type", "application/json")
-                    .header("Accept", "application/json")
-                    .header("X-App-Version", "1.0.0");
-
-            return chain.proceed(requestBuilder.build());
-        };
     }
 
     @Bean
