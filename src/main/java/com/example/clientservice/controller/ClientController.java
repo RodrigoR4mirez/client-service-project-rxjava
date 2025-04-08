@@ -5,8 +5,9 @@ import com.example.clientservice.model.ClientRequest;
 import com.example.clientservice.model.ClientResponse;
 import com.example.clientservice.service.ClientService;
 import com.example.clientservice.util.HeadersUtil;
-import io.reactivex.rxjava3.core.Single;
-import io.reactivex.rxjava3.schedulers.Schedulers;
+
+import io.reactivex.Maybe;
+import io.reactivex.schedulers.Schedulers;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
@@ -37,7 +38,7 @@ public class ClientController {
      * @return ResponseEntity con los datos completos del cliente
      */
     @PostMapping(value = "/{transactionId}/search", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Single<ResponseEntity<ClientResponse>> searchClient(
+    public Maybe<ResponseEntity<ClientResponse>> searchClient(
             @PathVariable String transactionId,
             @Valid @RequestBody ClientRequest request,
             HttpServletRequest httpRequest) {
@@ -53,6 +54,11 @@ public class ClientController {
                 .map(clientResponse -> {
                     log.info("Retornando datos para cliente ID: {}", clientResponse.getId());
                     return ResponseEntity.ok(clientResponse);
+                })
+                .toMaybe()  // Convertir Single a Maybe
+                .onErrorResumeNext(error -> {
+                    log.error("Error en búsqueda de cliente", error);
+                    return Maybe.error(error);
                 });
     }
 }

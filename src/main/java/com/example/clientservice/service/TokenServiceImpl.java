@@ -2,7 +2,7 @@ package com.example.clientservice.service;
 
 import com.example.clientservice.model.TokenResponse;
 import com.example.clientservice.repository.TokenRepository;
-import io.reactivex.rxjava3.core.Single;
+import io.reactivex.Single;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;

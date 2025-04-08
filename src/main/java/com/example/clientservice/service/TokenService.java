@@ -1,6 +1,7 @@
 package com.example.clientservice.service;
 
-import io.reactivex.rxjava3.core.Single;
+
+import io.reactivex.Single;
 
 /**
  * Interfaz que define los servicios para la gestión de tokens de autenticación.

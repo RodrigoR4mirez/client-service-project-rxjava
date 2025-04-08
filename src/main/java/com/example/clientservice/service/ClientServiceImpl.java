@@ -8,7 +8,7 @@ import com.example.clientservice.model.ClientRequest;
 import com.example.clientservice.model.ClientResponse;
 import com.example.clientservice.model.external.ExternalClientRequest;
 import com.example.clientservice.repository.ClientRepository;
-import io.reactivex.rxjava3.core.Single;
+import io.reactivex.Single;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;

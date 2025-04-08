@@ -2,7 +2,7 @@ package com.example.clientservice.repository;
 
 import com.example.clientservice.model.external.ExternalClientRequest;
 import com.example.clientservice.model.external.ExternalClientResponse;
-import io.reactivex.rxjava3.core.Single;
+import io.reactivex.Single;
 import retrofit2.http.Body;
 import retrofit2.http.HeaderMap;
 import retrofit2.http.POST;

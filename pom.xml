@@ -15,7 +15,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>11</java.version>
     <retrofit.version>2.9.0</retrofit.version>
-    <rxjava.version>3.1.5</rxjava.version>
+    <rxjava.version>2.2.21</rxjava.version>
     <jackson.version>2.13.3</jackson.version>
     <mapstruct.version>1.5.3.Final</mapstruct.version>
 
@@ -55,7 +55,7 @@
     </dependency>
     <dependency>
       <groupId>com.squareup.retrofit2</groupId>
-      <artifactId>adapter-rxjava3</artifactId>
+      <artifactId>adapter-rxjava2</artifactId>
       <version>${retrofit.version}</version>
     </dependency>
     <dependency>
@@ -66,7 +66,7 @@
 
     <!-- RxJava -->
     <dependency>
-      <groupId>io.reactivex.rxjava3</groupId>
+      <groupId>io.reactivex.rxjava2</groupId>
       <artifactId>rxjava</artifactId>
       <version>${rxjava.version}</version>
     </dependency>

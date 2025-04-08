@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
 import java.io.IOException;
@@ -53,7 +53,7 @@ public class RetrofitConfig {
                 .addInterceptor(timeoutInterceptor())
                 .addInterceptor(headerInterceptor())
                 .addInterceptor(loggingInterceptor)
-                .build();  // Eliminado el .eventListener()
+                .build();
     }
 
     private Interceptor timeoutInterceptor() {
@@ -84,7 +84,7 @@ public class RetrofitConfig {
                 .baseUrl(baseUrl)
                 .client(okHttpClient)
                 .addConverterFactory(JacksonConverterFactory.create())
-                .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
     }
 }

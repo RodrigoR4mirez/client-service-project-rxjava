@@ -3,7 +3,7 @@ package com.example.clientservice.service;
 import com.example.clientservice.model.ApiHeaders;
 import com.example.clientservice.model.ClientRequest;
 import com.example.clientservice.model.ClientResponse;
-import io.reactivex.rxjava3.core.Single;
+import io.reactivex.Single;
 
 /**
  * Interfaz que define los servicios para la gestión de clientes.

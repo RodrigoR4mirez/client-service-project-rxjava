@@ -2,7 +2,7 @@ package com.example.clientservice.repository;
 
 import com.example.clientservice.model.external.ExternalClientRequest;
 import com.example.clientservice.model.external.ExternalClientResponse;
-import io.reactivex.rxjava3.core.Single;
+import io.reactivex.Single;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;

@@ -1,7 +1,7 @@
 package com.example.clientservice.repository;
 
 import com.example.clientservice.model.TokenResponse;
-import io.reactivex.rxjava3.core.Single;
+import io.reactivex.Single;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
